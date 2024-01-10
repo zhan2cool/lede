@@ -52,7 +52,7 @@ jobs:
       - name: Use Cache
         uses: klever1988/cachewrtbuild@main
         with:
-          ccache: true
+          ccache: 'true'
 
       - name: Update feeds
         run: |

@@ -46,6 +46,11 @@ jobs:
 
       - name: Checkout OpenWrt
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Use Cache
+        uses: klever1988/cachewrtbuild@main
 
       - name: Update feeds
         run: |
@@ -202,6 +207,12 @@ jobs:
 
           #
           # ========================固件定制部分结束========================
+          
+          # 缓存
+          cat >> .config <<EOF
+          CONFIG_DEVEL=y
+          CONFIG_CCACHE=y
+          EOF
           
           make defconfig
 
